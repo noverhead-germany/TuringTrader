@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <Authors>Felix Bertram</Authors>
@@ -19,14 +19,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AvalonLibrary" Version="3.0.0" />
-    <PackageReference Include="NetOfficeFw.Core" Version="1.9.3">
-      <NoWarn>NU1701</NoWarn>
-    </PackageReference>
-    <PackageReference Include="NetOfficeFw.Excel" Version="1.9.3">
-      <NoWarn>NU1701</NoWarn>
-    </PackageReference>
-    <PackageReference Include="OxyPlot.Wpf" Version="2.1.2" />
+    <PackageReference Include="AvalonLibrary" Version="4.0.1" />
+    <PackageReference Include="OxyPlot.Wpf" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>

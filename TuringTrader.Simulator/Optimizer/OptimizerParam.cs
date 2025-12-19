@@ -136,19 +136,17 @@ namespace TuringTrader.Optimizer
             {
                 Type algoType = _algorithm.GetType();
 
-                PropertyInfo property = algoType.GetProperties()
-                    .Where(p => p.Name == Name)
-                    .FirstOrDefault();
+                PropertyInfo? propertyInfo = algoType.GetProperties()
+                    .FirstOrDefault(p => p.Name == Name);
 
-                if (property != null)
-                    return (int)property.GetValue(_algorithm);
+                if (propertyInfo != null)
+                    return (int)propertyInfo.GetValue(_algorithm)!;
 
-                FieldInfo field = algoType.GetFields()
-                    .Where(f => f.Name == Name)
-                    .FirstOrDefault();
+                FieldInfo? fieldInfo = algoType.GetFields()
+                    .FirstOrDefault(f => f.Name == Name);
 
-                if (field != null)
-                    return (int)field.GetValue(_algorithm);
+                if (fieldInfo != null)
+                    return (int)fieldInfo.GetValue(_algorithm)!;
 
                 throw new Exception(string.Format("OptimizerParam: parameter {0} not found", Name));
             }
@@ -157,24 +155,23 @@ namespace TuringTrader.Optimizer
             {
                 Type algoType = _algorithm.GetType();
 
-                PropertyInfo property = algoType.GetProperties()
-                    .Where(p => p.Name == Name)
-                    .FirstOrDefault();
+                PropertyInfo? propertyInfo = algoType.GetProperties()
+                    .FirstOrDefault(p => p.Name == Name);
 
-                if (property != null)
-                    property.SetValue(_algorithm, value);
+                if (propertyInfo != null)
+                    propertyInfo.SetValue(_algorithm, value);
 
-                FieldInfo field = algoType.GetFields()
-                    .Where(f => f.Name == Name)
-                    .FirstOrDefault();
+                FieldInfo? fieldInfo = algoType.GetFields()
+                    .FirstOrDefault(f => f.Name == Name);
 
-                if (field != null)
-                    field.SetValue(_algorithm, value);
+                if (fieldInfo != null)
+                    fieldInfo.SetValue(_algorithm, value);
 
-                if (property == null && field == null)
+                if (propertyInfo == null && fieldInfo == null)
                     throw new Exception(string.Format("OptimizerParam: parameter {0} not found", Name));
             }
         }
+
         #endregion
         #region public int Start
         /// <summary>

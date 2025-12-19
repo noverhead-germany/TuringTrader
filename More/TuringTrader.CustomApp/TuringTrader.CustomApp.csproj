@@ -2,14 +2,12 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-	<TargetFramework>net6.0-windows</TargetFramework>
+	<TargetFramework>net10.0-windows</TargetFramework>
 	<Platforms>x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="TuringTrader.Simulator">
-      <HintPath>C:\Program Files\TuringTrader\Bin\TuringTrader.Simulator.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\TuringTrader.Simulator\TuringTrader.Simulator.csproj" />
   </ItemGroup>
 
 </Project>

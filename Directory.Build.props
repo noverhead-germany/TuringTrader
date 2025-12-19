@@ -1,0 +1,13 @@
+<!-- Ursache: dein Property enthält CR/LF/Whitespace → landet 1:1 im AssemblyFile und macht den Pfad “illegal”. 
+     Fix: Property absolut “einzeilig” machen (trim) und keine Zeilenumbrüche im Property-Body haben. -->
+
+<!-- C:\Users\NOverhead\Documents\GitHub\TuringTrader\Directory.Build.props -->
+<Project>
+	<PropertyGroup>
+		<_PresentationBuildTasksTfm Condition="'$(MSBuildRuntimeType)' == 'Core'">net10.0</_PresentationBuildTasksTfm>
+		<_PresentationBuildTasksTfm Condition="'$(MSBuildRuntimeType)' != 'Core'">net472</_PresentationBuildTasksTfm>
+
+		<!-- WICHTIG: alles in EINER ZEILE, ohne Einrückung/Linebreaks -->
+		<_PresentationBuildTasksAssembly Condition="'$(_PresentationBuildTasksAssembly)'==''">$([System.String]::Copy($([System.IO.Path]::GetFullPath('$(MSBuildSDKsPath)\Microsoft.NET.Sdk.WindowsDesktop\tools\$(_PresentationBuildTasksTfm)\PresentationBuildTasks.dll'))).Trim())</_PresentationBuildTasksAssembly>
+	</PropertyGroup>
+</Project>
